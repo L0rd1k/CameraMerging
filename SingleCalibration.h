@@ -29,8 +29,9 @@ public:
     SingleCalibration();
     virtual ~SingleCalibration();
     int collectImages(VideoCapture &cap);
-private:
-
+protected:
+    Size imageSize; // the size of the frame;    
+    int imageCount = 1; // the count of the frame wich was collected
 };
 
 int cameraCalibration();

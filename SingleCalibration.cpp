@@ -28,14 +28,38 @@ int SingleCalibration::collectImages(VideoCapture& cap)
         return -1;
     }
     
-    Mat edges;
+    cout << "Collecting images." << endl;
+    cout << "Space  - to save the image's frame." << endl;
+    cout << "ESC - exit the application." << endl;
+    
+    Mat frame; // The current frame of the camera
     
     while(true)
     {
-        Mat frame;
-        cap >> frame; // get a new frame from camera
-        imshow("edges", edges);
-        waitKey(30);
+        if(!cap.read(frame))
+        {
+            cout << "Error reading camera" << endl;
+            continue;
+        }       
+        imageSize = frame.size(); // get the current size of the frame      
+        imshow("Original frames", frame); // The output frame       
+        int key = waitKey(30);
+        if(key == 27) // ESC
+        {   
+            return -1;
+        }
+        else if(key == 32) // SPACE
+        {
+            cout << "Collected " << imageCount<< " images" << endl;
+            string filepath = "/home/ilya/NetBeansProjects/CameraMerging/images/";
+            
+            ostringstream ostr; // the next three rows, convert number to string
+            ostr << imageCount;
+            string theNumberString = ostr.str();
+            
+            imwrite(filepath + theNumberString + ".jpg",frame);
+            imageCount++;
+        }
     }
     
 }
