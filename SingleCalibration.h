@@ -21,6 +21,7 @@
 #include <iostream>
 #include <string>
 
+
 using namespace cv;
 using namespace std;
 
@@ -29,9 +30,15 @@ public:
     SingleCalibration();
     virtual ~SingleCalibration();
     int collectImages(VideoCapture &cap);
+    void calibrate();
+    vector<Point2f> collectPoints(Mat image);
 protected:
+    void convertToGray(const Mat& in, Mat& out);
+    
+    CalibratorBase* ptrCalibrator; // pointer to abstract class 
     Size imageSize; // the size of the frame;    
-    int imageCount = 1; // the count of the frame wich was collected
+    int imageCount; // the count of the frame wich was collected 
+    vector< vector<Point2f> > imagePoints;
 };
 
 int cameraCalibration();

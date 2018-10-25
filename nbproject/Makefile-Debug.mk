@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/PointsCollectorChess.o \
+	${OBJECTDIR}/PointsCollectorCircles.o \
 	${OBJECTDIR}/SingleCalibration.o \
 	${OBJECTDIR}/main.o
 
@@ -62,6 +64,16 @@ LDLIBSOPTIONS=-L/usr/local/opencv3.2/lib -lopencv_aruco -lopencv_bgsegm -lopencv
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/PointsCollectorChess.o: PointsCollectorChess.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorChess.o PointsCollectorChess.cpp
+
+${OBJECTDIR}/PointsCollectorCircles.o: PointsCollectorCircles.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorCircles.o PointsCollectorCircles.cpp
 
 ${OBJECTDIR}/SingleCalibration.o: SingleCalibration.cpp
 	${MKDIR} -p ${OBJECTDIR}
