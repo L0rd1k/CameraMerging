@@ -16,12 +16,14 @@
 
 #include <vector>
 
+#include <opencv2/core.hpp>
+
 using namespace std;
 using namespace cv;
 
 class CalibratorBase {
 public:
-    virtual ~CalibratorBase();    
+    virtual ~CalibratorBase() {};    
     virtual vector<Point3f> collectObjectPoints() = 0;
     virtual vector<Point2f> collectFramePoints(Mat &image) = 0;
     virtual Size getChessboardSize() = 0;

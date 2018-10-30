@@ -18,9 +18,15 @@
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/calib3d.hpp>
+
 #include <iostream>
 #include <string>
+#include <vector>
+#include <list>
 
+#include "CalibratorBase.h"
+#include "PointsCollectorBase.h"
+#include "FoVChecker.h"
 
 using namespace cv;
 using namespace std;
@@ -29,11 +35,20 @@ class SingleCalibration {
 public:
     SingleCalibration();
     virtual ~SingleCalibration();
+    
     int collectImages(VideoCapture &cap);
-    void calibrate();
+    int calibrate();
     vector<Point2f> collectPoints(Mat image);
+    int calculateFoV();
+    
+
 protected:
     void convertToGray(const Mat& in, Mat& out);
+    void showPoints(Mat image, vector<Point2f> &corners);
+    void imshow_my(const String& winname, Mat& mat);
+    void calib();
+    void saveCalib(Mat m, Mat d, Size imageSize);
+    void openCalib(Mat& m, Mat& d, Size& imageSize);
     
     CalibratorBase* ptrCalibrator; // pointer to abstract class 
     Size imageSize; // the size of the frame;    

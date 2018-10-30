@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/FoVChecker.o \
 	${OBJECTDIR}/PointsCollectorChess.o \
 	${OBJECTDIR}/PointsCollectorCircles.o \
 	${OBJECTDIR}/SingleCalibration.o \
@@ -65,25 +66,30 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/FoVChecker.o: FoVChecker.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FoVChecker.o FoVChecker.cpp
+
 ${OBJECTDIR}/PointsCollectorChess.o: PointsCollectorChess.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorChess.o PointsCollectorChess.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorChess.o PointsCollectorChess.cpp
 
 ${OBJECTDIR}/PointsCollectorCircles.o: PointsCollectorCircles.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorCircles.o PointsCollectorCircles.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorCircles.o PointsCollectorCircles.cpp
 
 ${OBJECTDIR}/SingleCalibration.o: SingleCalibration.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SingleCalibration.o SingleCalibration.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SingleCalibration.o SingleCalibration.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:

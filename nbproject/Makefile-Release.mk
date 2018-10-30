@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/FoVChecker.o \
 	${OBJECTDIR}/PointsCollectorChess.o \
 	${OBJECTDIR}/PointsCollectorCircles.o \
 	${OBJECTDIR}/SingleCalibration.o \
@@ -64,6 +65,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/FoVChecker.o: FoVChecker.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FoVChecker.o FoVChecker.cpp
 
 ${OBJECTDIR}/PointsCollectorChess.o: PointsCollectorChess.cpp
 	${MKDIR} -p ${OBJECTDIR}

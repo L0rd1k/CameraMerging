@@ -44,7 +44,8 @@ build/Debug/GNU-Linux/main.o: main.cpp SingleCalibration.h \
  /usr/local/opencv3.2/include/opencv2/flann/defines.h \
  /usr/local/opencv3.2/include/opencv2/flann/config.h \
  /usr/local/opencv3.2/include/opencv2/core/affine.hpp \
- /usr/local/opencv3.2/include/opencv2/calib3d/calib3d_c.h
+ /usr/local/opencv3.2/include/opencv2/calib3d/calib3d_c.h \
+ CalibratorBase.h PointsCollectorBase.h FoVChecker.h
 
 SingleCalibration.h:
 
@@ -139,3 +140,9 @@ SingleCalibration.h:
 /usr/local/opencv3.2/include/opencv2/core/affine.hpp:
 
 /usr/local/opencv3.2/include/opencv2/calib3d/calib3d_c.h:
+
+CalibratorBase.h:
+
+PointsCollectorBase.h:
+
+FoVChecker.h:

@@ -14,7 +14,8 @@
 #ifndef POINTSCOLLECTORCIRCLES_H
 #define POINTSCOLLECTORCIRCLES_H
 
-class PointsCollectorCircles {
+class PointsCollectorCircles //: public PointsCollectorBase, public CalibratorBase 
+{
 public:
     PointsCollectorCircles();
     PointsCollectorCircles(const PointsCollectorCircles& orig);

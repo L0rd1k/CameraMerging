@@ -4,6 +4,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Исходные файлы"
                    projectFiles="true">
+      <logicalFolder name="f3" displayName="FoV" projectFiles="true">
+        <itemPath>FoVChecker.cpp</itemPath>
+        <itemPath>FoVChecker.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="PointsCollectorMode" projectFiles="true">
         <itemPath>PointsCollectorChess.cpp</itemPath>
         <itemPath>PointsCollectorChess.h</itemPath>
@@ -14,6 +18,7 @@
                      displayName="SingleCameraCalibration"
                      projectFiles="true">
         <itemPath>CalibratorBase.h</itemPath>
+        <itemPath>PointsCollectorBase.h</itemPath>
         <itemPath>SingleCalibration.cpp</itemPath>
         <itemPath>SingleCalibration.h</itemPath>
       </logicalFolder>
@@ -49,6 +54,8 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <standard>8</standard>
+          <commandlineTool>g++</commandlineTool>
           <incDir>
             <pElem>/usr/local/opencv3.2/include</pElem>
           </incDir>
@@ -104,6 +111,12 @@
       </compileType>
       <item path="CalibratorBase.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="FoVChecker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FoVChecker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PointsCollectorBase.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="PointsCollectorChess.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PointsCollectorChess.h" ex="false" tool="3" flavor2="0">
@@ -140,6 +153,12 @@
         </asmTool>
       </compileType>
       <item path="CalibratorBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FoVChecker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FoVChecker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PointsCollectorBase.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PointsCollectorChess.cpp" ex="false" tool="1" flavor2="0">
       </item>
