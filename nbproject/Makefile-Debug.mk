@@ -35,10 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/FastUndistort.o \
 	${OBJECTDIR}/FoVChecker.o \
 	${OBJECTDIR}/PointsCollectorChess.o \
 	${OBJECTDIR}/PointsCollectorCircles.o \
 	${OBJECTDIR}/SingleCalibration.o \
+	${OBJECTDIR}/Undistort.o \
 	${OBJECTDIR}/main.o
 
 
@@ -66,6 +68,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/FastUndistort.o: FastUndistort.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FastUndistort.o FastUndistort.cpp
+
 ${OBJECTDIR}/FoVChecker.o: FoVChecker.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -85,6 +92,11 @@ ${OBJECTDIR}/SingleCalibration.o: SingleCalibration.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SingleCalibration.o SingleCalibration.cpp
+
+${OBJECTDIR}/Undistort.o: Undistort.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Undistort.o Undistort.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

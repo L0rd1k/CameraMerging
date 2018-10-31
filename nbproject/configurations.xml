@@ -5,6 +5,10 @@
                    displayName="Исходные файлы"
                    projectFiles="true">
       <logicalFolder name="f4" displayName="Distortion" projectFiles="true">
+        <itemPath>FastUndistort.cpp</itemPath>
+        <itemPath>FastUndistort.h</itemPath>
+        <itemPath>Undistort.cpp</itemPath>
+        <itemPath>Undistort.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="FoV" projectFiles="true">
         <itemPath>FoVChecker.cpp</itemPath>
@@ -29,6 +33,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Файлы заголовков"
                    projectFiles="true">
+      <itemPath>Timer.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Файлы ресурсов"
@@ -113,6 +118,10 @@
       </compileType>
       <item path="CalibratorBase.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="FastUndistort.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FastUndistort.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="FoVChecker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FoVChecker.h" ex="false" tool="3" flavor2="0">
@@ -130,6 +139,12 @@
       <item path="SingleCalibration.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SingleCalibration.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Timer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Undistort.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Undistort.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -156,6 +171,10 @@
       </compileType>
       <item path="CalibratorBase.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="FastUndistort.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FastUndistort.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="FoVChecker.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FoVChecker.h" ex="false" tool="3" flavor2="0">
@@ -173,6 +192,12 @@
       <item path="SingleCalibration.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="SingleCalibration.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Timer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Undistort.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Undistort.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
