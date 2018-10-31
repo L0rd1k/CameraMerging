@@ -4,6 +4,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Исходные файлы"
                    projectFiles="true">
+      <logicalFolder name="f4" displayName="Distortion" projectFiles="true">
+      </logicalFolder>
       <logicalFolder name="f3" displayName="FoV" projectFiles="true">
         <itemPath>FoVChecker.cpp</itemPath>
         <itemPath>FoVChecker.h</itemPath>

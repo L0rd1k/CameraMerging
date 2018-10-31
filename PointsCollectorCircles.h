@@ -13,15 +13,29 @@
 
 #ifndef POINTSCOLLECTORCIRCLES_H
 #define POINTSCOLLECTORCIRCLES_H
+#include "PointsCollectorBase.h"
+#include "CalibratorBase.h"
+#include "opencv2/core/core.hpp"
+#include "opencv2/calib3d.hpp"
+#include <vector>
+#include <iostream>
 
-class PointsCollectorCircles //: public PointsCollectorBase, public CalibratorBase 
+using namespace std;
+using namespace cv;
+
+class PointsCollectorCircles : public PointsCollectorBase, public CalibratorBase 
 {
 public:
-    PointsCollectorCircles();
-    PointsCollectorCircles(const PointsCollectorCircles& orig);
+    PointsCollectorCircles(int x = 4, int y = 11, int size = 44, bool isAsymmetric = true);
     virtual ~PointsCollectorCircles();
+    void collectKeyPoints(Mat &image, vector<Point2f> &framePoints,vector<Point3f> &basePoints) override;
+    vector<Point3f> collectObjectPoints() override;
+    vector<Point2f> collectFramePoints(Mat &image) override;
+    Size getChessboardSize() override;
 private:
-
+    Size chessboardSize;
+    float squareSize;
+    bool isAsymmetric;  
 };
 
 #endif /* POINTSCOLLECTORCIRCLES_H */

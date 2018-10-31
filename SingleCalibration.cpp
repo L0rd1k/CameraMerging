@@ -17,7 +17,8 @@
 
 SingleCalibration::SingleCalibration() 
 {
-    ptrCalibrator = new PointsCollectorChess(9,6,25);
+    //ptrCalibrator = new PointsCollectorChess(9,6,25);
+    ptrCalibrator = new PointsCollectorCircles(4,11,44);
 }
 
 
@@ -63,7 +64,7 @@ int SingleCalibration::collectImages(VideoCapture& cap)
             string theNumberString = ostr.str();
             
             string filepath = "/home/ilya/NetBeansProjects/CameraMerging/images/";
-            imwrite(filepath + theNumberString + ".jpg",frame);
+            imwrite(filepath + theNumberString + ".jpg",frame); // writing an image to folder
             imageCount++;
         }
     }
@@ -72,11 +73,11 @@ int SingleCalibration::collectImages(VideoCapture& cap)
 
 vector<Point2f> SingleCalibration::collectPoints(Mat image)
 {
-    imageSize = image.size();
+    imageSize = image.size(); // image size(for instance 1356x1024)
     
-    cout << imageSize << endl;
+    cout << imageSize << endl; 
     
-    vector<Point2f> currentPoints; 
+    vector<Point2f> currentPoints; // Points from the given image 
     
     const int maxScale = 1;  
     Mat gray;  
@@ -93,36 +94,36 @@ vector<Point2f> SingleCalibration::collectPoints(Mat image)
             resize(gray, tmpImage, Size(0,0), s, s, CV_INTER_CUBIC);
         }       
         
-        currentPoints = ptrCalibrator->collectFramePoints(tmpImage);
+        currentPoints = ptrCalibrator->collectFramePoints(tmpImage); // here we got specific corners points from the image
         
-//        cout << "Current Points" << currentPoints << endl;
+        //cout << "Current Points" << currentPoints;
         
         //cout << currentPoints.size() << endl;
         
-        if( currentPoints.size() > 0)
+        if( currentPoints.size() > 0) // in case we get any points
         {
-            for(uint j=0; j < currentPoints.size(); j++)
+            for(uint j=0; j < currentPoints.size(); j++) //25 points 
             {
                 currentPoints[j].x = currentPoints[j].x / s;
                 currentPoints[j].y = currentPoints[j].y / s;
             }
-            imagePoints.push_back(currentPoints);
+            imagePoints.push_back(currentPoints);  // every points (x,y)
             break;
         }
     }   
     
-    showPoints(gray,currentPoints);
+    showPoints(gray,currentPoints); //Show points ont he image
     
     return currentPoints;
 }
 
 void SingleCalibration::showPoints(Mat image, vector<Point2f> & corners)
 {
-    if(corners.size() > 0)
+    if(corners.size() > 0)  // 25 points (x,y) > 0
     {
         Mat cornersImage;
-        cvtColor(image,cornersImage, CV_GRAY2BGR);
-        drawChessboardCorners(cornersImage, ptrCalibrator->getChessboardSize(),corners,true);
+        cvtColor(image,cornersImage, CV_GRAY2BGR); // convert To RGB again
+        drawChessboardCorners(cornersImage, ptrCalibrator->getChessboardSize(),corners,true); // draw a specific points on the image 
         imshow_my("Corners", cornersImage);
         waitKey(10000);
     }
@@ -132,7 +133,7 @@ void SingleCalibration::imshow_my(const String& winname, Mat& mat)
 {
     Size maxSize(1600,1200);
     Mat resized;
-    if(mat.cols > maxSize.width || mat.rows > maxSize.height) 
+    if(mat.cols > maxSize.width || mat.rows > maxSize.height) // resize image if it's large then 1600x1200
     {
         resize(mat, resized, maxSize);
         imshow(winname, resized);
@@ -145,17 +146,17 @@ void SingleCalibration::imshow_my(const String& winname, Mat& mat)
 int SingleCalibration::calibrate()
 {
     cout << "The process of calibration" << endl;
-    string folder = "/home/ilya/NetBeansProjects/CameraMerging/images/*.jpg";
-    vector<String> filename; 
-    glob(folder,filename);
+    string folder = "/home/ilya/NetBeansProjects/CameraMerging/Circles/*.png";
+    vector<String> filename; // vector for saving all files which we found in folder
+    glob(folder,filename); // the function for searching specific files
     cout << "The numbers of frames " << filename.size() << endl; 
     
-    for(int i = 0; i < filename.size(); i++)
+    for(int i = 0; i < filename.size(); i++) 
     {
         cout << "Loading " << i+1 <<"........."  << filename[i] << endl;
-        Mat image = imread(filename[i]);
+        Mat image = imread(filename[i]); // read the files from the vector
         //cout << image << endl;
-        collectPoints(image);
+        collectPoints(image); // main function for collecting point from a given image
     }
     calib();  
     return 0;
@@ -164,17 +165,17 @@ int SingleCalibration::calibrate()
 
 void SingleCalibration::calib()
 {
-    vector< vector<Point3f> > objectPoints;
-    int samplesCounter = imagePoints.size();
-    for (int i=0; i < samplesCounter; ++i)
+    vector< vector<Point3f> > objectPoints; 
+    int samplesCounter = imagePoints.size(); // 25 Points (x,y)
+    for (int i=0; i < samplesCounter; ++i) 
     {
-        objectPoints.push_back(ptrCalibrator->collectObjectPoints());    
+        objectPoints.push_back(ptrCalibrator->collectObjectPoints());  //from (x,y) to (x,y,z)  
     }
     
-    Mat m,d;
-    vector <Mat> t,r;
+    Mat m,d; // m - cameraMatrix && d - distortionCoeffs
+    vector <Mat> t,r; // rotaion and translation vector
      
-    cout << imagePoints.size() << endl;
+    cout << "Image Points Size : "<< imagePoints.size() << endl; 
     double err = calibrateCamera(objectPoints, imagePoints, imageSize, m, d, r, t,
                                     CV_CALIB_FIX_K4 |
                                     CV_CALIB_FIX_K5 |
@@ -182,13 +183,13 @@ void SingleCalibration::calib()
                                     CV_CALIB_FIX_K3 |
                                     CV_CALIB_ZERO_TANGENT_DIST,
                                     TermCriteria(CV_TERMCRIT_ITER + CV_TERMCRIT_EPS, 100, 1e-5));
-    cout << "Calibration error" << err << endl;
+    cout << "Calibration error: " << err << endl; // At the end we got Pre-error of calibration
     saveCalib(m,d, imageSize);
 }
 
 void SingleCalibration::saveCalib(Mat m, Mat d, Size imageSize)
 {
-    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/images/intrinsics.yml";
+    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/Circles/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_WRITE);
     if(fs.isOpened())
     {
@@ -225,7 +226,7 @@ int SingleCalibration::calculateFoV()
 
 void SingleCalibration::openCalib(Mat& m, Mat& d, Size& s)
 {
-    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/images/intrinsics.yml";
+    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/Circles/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_READ);
     if (fs.isOpened()) {
         fs["m"] >> m;
