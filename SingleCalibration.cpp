@@ -17,8 +17,8 @@
 
 SingleCalibration::SingleCalibration() 
 {
-    //ptrCalibrator = new PointsCollectorChess(9,6,25);
-    ptrCalibrator = new PointsCollectorCircles(4,11,44);
+    ptrCalibrator = new PointsCollectorChess(9,6,25);
+    //ptrCalibrator = new PointsCollectorCircles(4,11,44);
 }
 
 
@@ -42,12 +42,13 @@ int SingleCalibration::collectImages(VideoCapture& cap)
     Mat frame; // The current frame of the camera
     
     while(true)
-    {
+    {                
         if(!cap.read(frame))
         {
             cout << "Error reading camera" << endl;
             continue;
         }       
+        
         imageSize = frame.size(); // get the current size of the frame      
         imshow("Original frames", frame); // The output frame       
         int key = waitKey(30);
@@ -82,7 +83,7 @@ vector<Point2f> SingleCalibration::collectPoints(Mat image)
     const int maxScale = 1;  
     Mat gray;  
     convertToGray(image,gray); // convert original frame to gray
-    //bitwise_not(gray, gray);   // inverts every bit of an array.
+    //bitwise_not(gray, gray);   // ! ONLY FOR IK CAMERAS ! // inverts every bit of an array
     
     
     
@@ -146,7 +147,7 @@ void SingleCalibration::imshow_my(const String& winname, Mat& mat)
 int SingleCalibration::calibrate()
 {
     cout << "The process of calibration" << endl;
-    string folder = "/home/ilya/NetBeansProjects/CameraMerging/Circles/*.png";
+    string folder = "/home/ilya/NetBeansProjects/CameraMerging/images/*.jpg";
     vector<String> filename; // vector for saving all files which we found in folder
     glob(folder,filename); // the function for searching specific files
     cout << "The numbers of frames " << filename.size() << endl; 
@@ -189,7 +190,7 @@ void SingleCalibration::calib()
 
 void SingleCalibration::saveCalib(Mat m, Mat d, Size imageSize)
 {
-    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/Circles/intrinsics.yml";
+    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/images/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_WRITE);
     if(fs.isOpened())
     {
@@ -226,7 +227,7 @@ int SingleCalibration::calculateFoV()
 
 void SingleCalibration::openCalib(Mat& m, Mat& d, Size& s)
 {
-    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/Circles/intrinsics.yml";
+    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/images/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_READ);
     if (fs.isOpened()) {
         fs["m"] >> m;

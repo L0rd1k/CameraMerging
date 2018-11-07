@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/PointsCollectorChess.o \
 	${OBJECTDIR}/PointsCollectorCircles.o \
 	${OBJECTDIR}/SingleCalibration.o \
+	${OBJECTDIR}/TwoCamerasCalibrator.o \
 	${OBJECTDIR}/Undistort.o \
 	${OBJECTDIR}/main.o
 
@@ -92,6 +93,11 @@ ${OBJECTDIR}/SingleCalibration.o: SingleCalibration.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SingleCalibration.o SingleCalibration.cpp
+
+${OBJECTDIR}/TwoCamerasCalibrator.o: TwoCamerasCalibrator.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TwoCamerasCalibrator.o TwoCamerasCalibrator.cpp
 
 ${OBJECTDIR}/Undistort.o: Undistort.cpp
 	${MKDIR} -p ${OBJECTDIR}

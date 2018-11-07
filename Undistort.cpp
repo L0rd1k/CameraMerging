@@ -27,9 +27,11 @@ int Undistort::run()
     bool res = fs.open("/home/ilya/NetBeansProjects/CameraMerging/Circles/intrinsics.yml", CV_STORAGE_READ);
     if(res)
     {
-        fs["m"] >> m;
-        fs["d"] >> d;
-        fs.release();
+        fs["m"] >> m; // get matrix intrinsics coeffs
+        cout << "Matrix's value: " << endl << m << endl;
+        fs["d"] >> d; // get distortion coeffs
+        cout << "Distortion's value: " << endl <<  d << endl;
+        fs.release(); // release file storage
     }
     
     string source = "rtsp://192.168.0.162/live/main";
@@ -42,32 +44,31 @@ int Undistort::run()
     
     Mat frame, undistorted, undistortedFast;
     int key = 0;
-    
     FastUndistort fu(m,d);
     while(key != 27)
     {
         Timer tFrame;
-        if(!cap.read(frame)) {
+        if(!cap.read(frame)) 
+        {
             cout << "Error reading camera!" << endl;
             continue;
         }
-        cout << "frame time: " << tFrame.elapsedMs() << endl;
+        //cout << "frame time: " << tFrame.elapsedMs() << endl;
         if(tFrame.elapsedMs() > 5) 
         {
-            Timer t;
-            undistort(frame, undistorted, m, d);
-            cout << "undistort time: " << t.elapsedMs();
-            imshow("undistorted", undistorted);
+            Timer t;    
+            //undistort(frame, undistorted, m, d); // Transforms an image to compensate for lens distortion.
+            //cout << "undistort time: " << t.elapsedMs();
+            //imshow("undistorted", undistorted);
             t.reset();
+            
             fu.undistort(frame, undistortedFast);
-            cout << ", fast undistort time: " << t.elapsedMs() << endl;
+            //cout << ", fast undistort time: " << t.elapsedMs() << endl;
             imshow("undistortedFast", undistortedFast);
         }
-        
         imshow("frame", frame);
         key = waitKey(1);        
     }
-       
 }
 
 int testUndistort() 

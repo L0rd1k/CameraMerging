@@ -21,9 +21,9 @@ using namespace cv;
  */
 int main(int argc, char** argv) 
 {
-    //cameraCalibration();
-    testUndistort();
-
+    cameraCalibration();
+    //testUndistort();
+    
     
     return 0;
 }
