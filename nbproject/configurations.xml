@@ -72,6 +72,7 @@
           <incDir>
             <pElem>/usr/local/opencv3.2/include</pElem>
           </incDir>
+          <commandLine>-pthread</commandLine>
         </ccTool>
         <linkerTool>
           <linkerAddLib>

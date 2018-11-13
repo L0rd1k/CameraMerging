@@ -114,7 +114,6 @@ vector<Point2f> SingleCalibration::collectPoints(Mat image)
     }   
     
     showPoints(gray,currentPoints); //Show points ont he image
-    
     return currentPoints;
 }
 
@@ -218,10 +217,8 @@ int SingleCalibration::calculateFoV()
     FoVChecker fovChecker;
     double x = fovChecker.fovCalculator(m, imageSize.width, 0);
     double y = fovChecker.fovCalculator(m, imageSize.height, 1);
-    
     cout << "Degress in x axis: " << x << endl;
-    cout << "Degress in y axis: " << y  << endl;  
-        
+    cout << "Degress in y axis: " << y  << endl;      
     return 0;
 }
 
@@ -229,7 +226,8 @@ void SingleCalibration::openCalib(Mat& m, Mat& d, Size& s)
 {
     const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/images/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_READ);
-    if (fs.isOpened()) {
+    if (fs.isOpened()) 
+    {
         fs["m"] >> m;
         fs["d"] >> d;
         fs["s"] >> s;
@@ -252,7 +250,8 @@ int cameraCalibration()
     {
         case 1: 
         {
-            string source = "rtsp://192.168.0.162/live/main";           
+            //string source = "rtsp://192.168.0.162/live/main";         
+            string source = "rtsp://192.168.1.168/video_1";           
             VideoCapture cap(source);         
             return sc.collectImages(cap);
             break;

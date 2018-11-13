@@ -13,6 +13,7 @@
 
 #include <cstdlib>
 #include "SingleCalibration.h"
+#include "TwoCamerasCalibrator.h"
 #include "Undistort.h"
 using namespace std;
 using namespace cv;
@@ -21,9 +22,11 @@ using namespace cv;
  */
 int main(int argc, char** argv) 
 {
-    cameraCalibration();
-    //testUndistort();
+    //cameraCalibration(); // 1
+    //testUndistort(); // 2
     
+    TwoCamerasCalibrator tcc;
+    tcc.twoCamerasCalibration();
     
     return 0;
 }

@@ -40,7 +40,7 @@ build/Debug/GNU-Linux/TwoCamerasCalibrator.o: TwoCamerasCalibrator.cpp \
  /usr/local/opencv3.2/include/opencv2/imgproc/types_c.h \
  /usr/local/opencv3.2/include/opencv2/imgcodecs/imgcodecs_c.h \
  /usr/local/opencv3.2/include/opencv2/videoio/videoio_c.h \
- /usr/local/opencv3.2/include/opencv2/imgproc.hpp
+ /usr/local/opencv3.2/include/opencv2/imgproc.hpp Timer.h
 
 TwoCamerasCalibrator.h:
 
@@ -127,3 +127,5 @@ TwoCamerasCalibrator.h:
 /usr/local/opencv3.2/include/opencv2/videoio/videoio_c.h:
 
 /usr/local/opencv3.2/include/opencv2/imgproc.hpp:
+
+Timer.h:

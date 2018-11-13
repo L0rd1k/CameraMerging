@@ -19,6 +19,14 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include <iostream>
+#include <string>
+
+#include <pthread.h>
+#include <thread>
+#include <atomic>
+#include <mutex>
+
+#include "Timer.h"
 
 using namespace std;
 using namespace cv;
@@ -27,13 +35,25 @@ class TwoCamerasCalibrator {
 public:
     TwoCamerasCalibrator();
     virtual ~TwoCamerasCalibrator();
-private:
-protected:
-    
+    int twoCamerasCalibration();
 
+    
+private:
+    int loadCalibrations(int option);  
+    void startCameras();
+    void stopCameras();
+    int collectImages();
+    int grabPicture(VideoCapture cap, int camera); 
+private:
+    Mat intrinsicsMatrix[2], distortions[2];
+    Mat intrinsicsMatrixUndistort[2], distortionsUndistort[2];
+    Mat frameCam[2];
+    double resolutionCamX[2];
+    double resolutionCamY[2]; 
+    vector<string> imagelist;
 };
 
-int twoCamerasCalibration();
+int loadMatrix(string filename, string name, Mat &m);
 
 #endif /* TWOCAMERASCALIBRATOR_H */
 
