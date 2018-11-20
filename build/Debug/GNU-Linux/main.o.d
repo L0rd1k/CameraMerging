@@ -46,7 +46,9 @@ build/Debug/GNU-Linux/main.o: main.cpp SingleCalibration.h \
  /usr/local/opencv3.2/include/opencv2/core/affine.hpp \
  /usr/local/opencv3.2/include/opencv2/calib3d/calib3d_c.h \
  CalibratorBase.h PointsCollectorBase.h FoVChecker.h \
- TwoCamerasCalibrator.h Timer.h Undistort.h FastUndistort.h
+ TwoCamerasCalibrator.h Timer.h PointsCollectorChess.h \
+ /usr/local/opencv3.2/include/opencv2/core/core.hpp \
+ PointsCollectorCircles.h Undistort.h FastUndistort.h
 
 SingleCalibration.h:
 
@@ -151,6 +153,12 @@ FoVChecker.h:
 TwoCamerasCalibrator.h:
 
 Timer.h:
+
+PointsCollectorChess.h:
+
+/usr/local/opencv3.2/include/opencv2/core/core.hpp:
+
+PointsCollectorCircles.h:
 
 Undistort.h:
 

@@ -27,6 +27,10 @@
 #include <mutex>
 
 #include "Timer.h"
+#include "CalibratorBase.h"
+#include "PointsCollectorBase.h"
+#include "PointsCollectorChess.h"
+#include "PointsCollectorCircles.h"
 
 using namespace std;
 using namespace cv;
@@ -36,14 +40,16 @@ public:
     TwoCamerasCalibrator();
     virtual ~TwoCamerasCalibrator();
     int twoCamerasCalibration();
-
-    
+    int stereoCalibrateRectificate(const vector<string>& imagelist, Size boardSize, float squareSize);
 private:
     int loadCalibrations(int option);  
     void startCameras();
     void stopCameras();
     int collectImages();
     int grabPicture(VideoCapture cap, int camera); 
+    vector<Point2f> collectPoints(Mat image);
+    vector<Point2d> imageResize;
+    void showPoints(Mat image, vector<Point2f>& corners);
 private:
     Mat intrinsicsMatrix[2], distortions[2];
     Mat intrinsicsMatrixUndistort[2], distortionsUndistort[2];
@@ -51,9 +57,10 @@ private:
     double resolutionCamX[2];
     double resolutionCamY[2]; 
     vector<string> imagelist;
+    CalibratorBase* _calibrator;
 };
 
 int loadMatrix(string filename, string name, Mat &m);
-
+void convToGray(const Mat& in, Mat& out);
 #endif /* TWOCAMERASCALIBRATOR_H */
 

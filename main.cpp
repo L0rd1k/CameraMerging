@@ -27,7 +27,6 @@ int main(int argc, char** argv)
     
     TwoCamerasCalibrator tcc;
     tcc.twoCamerasCalibration();
-    
     return 0;
 }
 
