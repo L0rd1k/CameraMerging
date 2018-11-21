@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/DualCameraAligner.o \
+	${OBJECTDIR}/DualCameraMerger.o \
 	${OBJECTDIR}/FastUndistort.o \
 	${OBJECTDIR}/FoVChecker.o \
 	${OBJECTDIR}/PointsCollectorChess.o \
@@ -68,6 +70,16 @@ LDLIBSOPTIONS=-L/usr/local/opencv3.2/lib -lopencv_aruco -lopencv_bgsegm -lopencv
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/DualCameraAligner.o: DualCameraAligner.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DualCameraAligner.o DualCameraAligner.cpp
+
+${OBJECTDIR}/DualCameraMerger.o: DualCameraMerger.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DualCameraMerger.o DualCameraMerger.cpp
 
 ${OBJECTDIR}/FastUndistort.o: FastUndistort.cpp
 	${MKDIR} -p ${OBJECTDIR}

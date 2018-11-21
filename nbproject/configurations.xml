@@ -14,6 +14,12 @@
         <itemPath>FoVChecker.cpp</itemPath>
         <itemPath>FoVChecker.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f6" displayName="Merger" projectFiles="true">
+        <itemPath>DualCameraAligner.cpp</itemPath>
+        <itemPath>DualCameraAligner.h</itemPath>
+        <itemPath>DualCameraMerger.cpp</itemPath>
+        <itemPath>DualCameraMerger.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="PointsCollectorMode" projectFiles="true">
         <itemPath>PointsCollectorChess.cpp</itemPath>
         <itemPath>PointsCollectorChess.h</itemPath>
@@ -125,6 +131,14 @@
       </compileType>
       <item path="CalibratorBase.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="DualCameraAligner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DualCameraAligner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DualCameraMerger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DualCameraMerger.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="FastUndistort.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="FastUndistort.h" ex="false" tool="3" flavor2="0">
@@ -181,6 +195,14 @@
         </asmTool>
       </compileType>
       <item path="CalibratorBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DualCameraAligner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DualCameraAligner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DualCameraMerger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DualCameraMerger.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="FastUndistort.cpp" ex="false" tool="1" flavor2="0">
       </item>

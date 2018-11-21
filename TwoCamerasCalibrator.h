@@ -41,6 +41,7 @@ public:
     virtual ~TwoCamerasCalibrator();
     int twoCamerasCalibration();
     int stereoCalibrateRectificate(const vector<string>& imagelist, Size boardSize, float squareSize);
+    int mergeImages();
 private:
     int loadCalibrations(int option);  
     void startCameras();

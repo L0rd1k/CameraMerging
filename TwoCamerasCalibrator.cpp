@@ -507,12 +507,42 @@ int TwoCamerasCalibrator::stereoCalibrateRectificate(const vector<string>& image
     return EXIT_SUCCESS;
 }
 
+int TwoCamerasCalibrator::mergeImages()
+{
+    Mat frameCamCopy[2];
+    Mat frameCam0Rotated;
+    int key = 0;
+    while(key != 27)
+    {
+        if(hasFrame0)
+        {
+            lock_guard<std::mutex> guard0(m0);
+            frameCamCopy[0] = frameCam[0];
+            imshow("FrameCam[0]", frameCamCopy[0]);
+            hasFrame0 = false;
+        }
+        
+        if(hasFrame1) 
+        {
+            lock_guard<std::mutex> guard1(m1);
+            frameCamCopy[1] = frameCam[1];
+            imshow("FrameCam[1]", frameCamCopy[1]);
+            hasFrame1 = false;
+        }
+        key = waitKey(10);
+        if(frameCamCopy[1].size().height > 0 && frameCamCopy[0].size().height)
+        {
+            
+        }
+    }
+}
+
 int TwoCamerasCalibrator::twoCamerasCalibration()
 {
     int option = 1 ; // collect images by default       
     cout << "1. Collect images from both cameras(TV,IK) for StereoCalibration!" << endl;
     cout << "2. Stereo Calibration" << endl;
-    cout << "3. " << endl; 
+    cout << "3. Frames merging" << endl; 
     cout << "Choose the option: ";
     cin >> option;   
     
@@ -548,6 +578,7 @@ int TwoCamerasCalibrator::twoCamerasCalibration()
         case 3:
         {
             startCameras();
+            mergeImages();
             stopCameras();
             break;
         }
