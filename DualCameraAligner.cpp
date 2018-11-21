@@ -25,8 +25,7 @@ DualCameraAligner::DualCameraAligner(Mat intrinsics1, Mat intrinsics2, Mat rotat
 
 Mat DualCameraAligner::align(Mat img1)
 {
-    Mat result;
-    
+    Mat result;   
     Mat intrinsicsRotation = this->intrinsics2 * this->rotation * this->intrinsics1.inv();
     warpPerspective(img1, result, intrinsicsRotation, img1.size());
     return result;

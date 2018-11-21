@@ -1,5 +1,5 @@
-build/Debug/GNU-Linux/main.o: main.cpp SingleCalibration.h \
- /usr/local/opencv3.2/include/opencv/cv.h \
+build/Debug/GNU-Linux/DualCameraMerger.o: DualCameraMerger.cpp \
+ DualCameraMerger.h /usr/local/opencv3.2/include/opencv/cv.h \
  /usr/local/opencv3.2/include/opencv2/core/core_c.h \
  /usr/local/opencv3.2/include/opencv2/core/types_c.h \
  /usr/local/opencv3.2/include/opencv2/core/cvdef.h \
@@ -44,14 +44,9 @@ build/Debug/GNU-Linux/main.o: main.cpp SingleCalibration.h \
  /usr/local/opencv3.2/include/opencv2/flann/defines.h \
  /usr/local/opencv3.2/include/opencv2/flann/config.h \
  /usr/local/opencv3.2/include/opencv2/core/affine.hpp \
- /usr/local/opencv3.2/include/opencv2/calib3d/calib3d_c.h \
- CalibratorBase.h PointsCollectorBase.h FoVChecker.h \
- TwoCamerasCalibrator.h Timer.h PointsCollectorChess.h \
- /usr/local/opencv3.2/include/opencv2/core/core.hpp \
- PointsCollectorCircles.h DualCameraAligner.h DualCameraMerger.h \
- Undistort.h FastUndistort.h
+ /usr/local/opencv3.2/include/opencv2/calib3d/calib3d_c.h
 
-SingleCalibration.h:
+DualCameraMerger.h:
 
 /usr/local/opencv3.2/include/opencv/cv.h:
 
@@ -144,27 +139,3 @@ SingleCalibration.h:
 /usr/local/opencv3.2/include/opencv2/core/affine.hpp:
 
 /usr/local/opencv3.2/include/opencv2/calib3d/calib3d_c.h:
-
-CalibratorBase.h:
-
-PointsCollectorBase.h:
-
-FoVChecker.h:
-
-TwoCamerasCalibrator.h:
-
-Timer.h:
-
-PointsCollectorChess.h:
-
-/usr/local/opencv3.2/include/opencv2/core/core.hpp:
-
-PointsCollectorCircles.h:
-
-DualCameraAligner.h:
-
-DualCameraMerger.h:
-
-Undistort.h:
-
-FastUndistort.h:

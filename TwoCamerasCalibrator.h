@@ -31,6 +31,8 @@
 #include "PointsCollectorBase.h"
 #include "PointsCollectorChess.h"
 #include "PointsCollectorCircles.h"
+#include "DualCameraAligner.h"
+#include "DualCameraMerger.h"
 
 using namespace std;
 using namespace cv;

@@ -534,8 +534,15 @@ int TwoCamerasCalibrator::mergeImages()
         {
             DualCameraAligner dca(intrinsicsMatrixUndistort[0], intrinsicsMatrixUndistort[1], R);
             frameCam0Rotated = dca.align(frameCamCopy[0]);
+//            DualCameraMerger dcm;
+//            Mat result = dcm.merge(frameCam0Rotated, frameCamCopy[1]);
+//            if(result.cols > 0)
+//            {
+//                imshow("Result",result);
+//            }
         }
     }
+    return EXIT_SUCCESS;
 }
 
 int TwoCamerasCalibrator::twoCamerasCalibration()

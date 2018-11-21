@@ -14,13 +14,21 @@
 #ifndef DUALCAMERAMERGER_H
 #define DUALCAMERAMERGER_H
 
+#include "opencv/cv.h"
+#include "opencv2/imgproc.hpp"
+#include "opencv2/core.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/calib3d.hpp"
+#include <iostream>
+
+using namespace cv;
+using namespace std;
+
 class DualCameraMerger {
 public:
     DualCameraMerger();
-    DualCameraMerger(const DualCameraMerger& orig);
+    Mat merge(Mat img1,Mat img2);
     virtual ~DualCameraMerger();
-private:
-
 };
 
 #endif /* DUALCAMERAMERGER_H */

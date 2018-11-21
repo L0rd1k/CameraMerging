@@ -13,11 +13,29 @@
 
 #include "DualCameraMerger.h"
 
-DualCameraMerger::DualCameraMerger() {
+DualCameraMerger::DualCameraMerger() 
+{
 }
 
-DualCameraMerger::DualCameraMerger(const DualCameraMerger& orig) {
+Mat DualCameraMerger::merge(Mat img1, Mat img2)
+{
+    Mat edges, result, buffer[3];
+    
+    if(img1.size().height > 0 && img2.size().height)
+    {
+        cvtColor(img1, edges, COLOR_BGR2GRAY);
+        GaussianBlur(edges, edges, Size(7, 7), 1.5, 1.5);
+        Canny(edges, edges, 0, 30, 3);
+        split(img2, buffer);
+        Mat largerImage(Size(img2.size().width, img2.size().height), edges.type());
+        largerImage = Scalar(0);
+        edges.copyTo(largerImage(Rect(0, 0, edges.cols, edges.rows)));
+        bitwise_or(buffer[2], largerImage, buffer[2]);
+        cv::merge(buffer, 3, result);
+    }
+    return result;
 }
+
 
 DualCameraMerger::~DualCameraMerger() {
 }

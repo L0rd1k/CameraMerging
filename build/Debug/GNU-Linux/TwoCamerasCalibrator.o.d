@@ -43,7 +43,11 @@ build/Debug/GNU-Linux/TwoCamerasCalibrator.o: TwoCamerasCalibrator.cpp \
  /usr/local/opencv3.2/include/opencv2/imgproc.hpp Timer.h \
  CalibratorBase.h PointsCollectorBase.h PointsCollectorChess.h \
  /usr/local/opencv3.2/include/opencv2/core/core.hpp \
- PointsCollectorCircles.h
+ PointsCollectorCircles.h DualCameraAligner.h DualCameraMerger.h \
+ /usr/local/opencv3.2/include/opencv/cv.h \
+ /usr/local/opencv3.2/include/opencv2/photo/photo_c.h \
+ /usr/local/opencv3.2/include/opencv2/video/tracking_c.h \
+ /usr/local/opencv3.2/include/opencv2/objdetect/objdetect_c.h
 
 TwoCamerasCalibrator.h:
 
@@ -142,3 +146,15 @@ PointsCollectorChess.h:
 /usr/local/opencv3.2/include/opencv2/core/core.hpp:
 
 PointsCollectorCircles.h:
+
+DualCameraAligner.h:
+
+DualCameraMerger.h:
+
+/usr/local/opencv3.2/include/opencv/cv.h:
+
+/usr/local/opencv3.2/include/opencv2/photo/photo_c.h:
+
+/usr/local/opencv3.2/include/opencv2/video/tracking_c.h:
+
+/usr/local/opencv3.2/include/opencv2/objdetect/objdetect_c.h:
