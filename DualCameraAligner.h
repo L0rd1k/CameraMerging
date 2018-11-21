@@ -14,13 +14,24 @@
 #ifndef DUALCAMERAALIGNER_H
 #define DUALCAMERAALIGNER_H
 
+#include "opencv2/calib3d.hpp"
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
+
+using namespace cv;
+using namespace std;
+
 class DualCameraAligner {
 public:
     DualCameraAligner();
-    DualCameraAligner(const DualCameraAligner& orig);
+    DualCameraAligner(Mat intrinsics1, Mat instrinsics2, Mat rotation);
+    Mat align(Mat img1);
     virtual ~DualCameraAligner();
 private:
-
+    Mat intrinsics1;
+    Mat intrinsics2;
+    Mat rotation;
 };
 
 #endif /* DUALCAMERAALIGNER_H */

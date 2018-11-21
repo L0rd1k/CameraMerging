@@ -532,7 +532,8 @@ int TwoCamerasCalibrator::mergeImages()
         key = waitKey(10);
         if(frameCamCopy[1].size().height > 0 && frameCamCopy[0].size().height)
         {
-            
+            DualCameraAligner dca(intrinsicsMatrixUndistort[0], intrinsicsMatrixUndistort[1], R);
+            frameCam0Rotated = dca.align(frameCamCopy[0]);
         }
     }
 }

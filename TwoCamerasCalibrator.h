@@ -52,6 +52,7 @@ private:
     vector<Point2d> imageResize;
     void showPoints(Mat image, vector<Point2f>& corners);
 private:
+    Mat R, T;
     Mat intrinsicsMatrix[2], distortions[2];
     Mat intrinsicsMatrixUndistort[2], distortionsUndistort[2];
     Mat frameCam[2];

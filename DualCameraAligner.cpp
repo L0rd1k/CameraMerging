@@ -16,8 +16,22 @@
 DualCameraAligner::DualCameraAligner() {
 }
 
-DualCameraAligner::DualCameraAligner(const DualCameraAligner& orig) {
+DualCameraAligner::DualCameraAligner(Mat intrinsics1, Mat intrinsics2, Mat rotation)
+{
+    this->intrinsics1= intrinsics1;
+    this->intrinsics2 = intrinsics2;
+    this->rotation = rotation;
 }
+
+Mat DualCameraAligner::align(Mat img1)
+{
+    Mat result;
+    
+    Mat intrinsicsRotation = this->intrinsics2 * this->rotation * this->intrinsics1.inv();
+    warpPerspective(img1, result, intrinsicsRotation, img1.size());
+    return result;
+}
+
 
 DualCameraAligner::~DualCameraAligner() {
 }
