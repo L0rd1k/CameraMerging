@@ -49,7 +49,7 @@ private:
     void startCameras();
     void stopCameras();
     int collectImages();
-    int grabPicture(VideoCapture cap, int camera); 
+    int grabPicture(int camValue,VideoCapture cap, int camera); 
     vector<Point2f> collectPoints(Mat image);
     vector<Point2d> imageResize;
     void showPoints(Mat image, vector<Point2f>& corners);

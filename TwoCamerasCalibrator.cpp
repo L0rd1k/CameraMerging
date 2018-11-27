@@ -31,7 +31,7 @@ unique_ptr<std::thread> cam1_ptr;
 atomic<bool> threadRunning(true);
 atomic<bool> hasFrame0(false);
 atomic<bool> hasFrame1(false);
-mutex m0,m1;
+std::mutex m0,m1;
 
 TwoCamerasCalibrator::TwoCamerasCalibrator() 
 {
@@ -55,7 +55,8 @@ int loadMatrix(string filename, string name, Mat &m)
         if(m.rows > 0)
         {
             return EXIT_SUCCESS; // return EXIT_SUCCESS;
-        } else
+        } 
+        else
         {
             cerr << "Matrix " << name << " was empty in file " << filename << endl;     
         }
@@ -91,9 +92,10 @@ int TwoCamerasCalibrator::loadCalibrations(int option)
     return EXIT_SUCCESS; // return EXIT_SUCCESS;
 }
 
-int TwoCamerasCalibrator::grabPicture(VideoCapture cap, int camera) 
+int TwoCamerasCalibrator::grabPicture(int camValue, VideoCapture cap, int camera) 
 {
     Mat frameCamDistorted[2];
+    
     if(!cap.isOpened())
     {
         return EXIT_FAILURE;
@@ -101,27 +103,46 @@ int TwoCamerasCalibrator::grabPicture(VideoCapture cap, int camera)
     while(threadRunning)
     {
         Timer tFrame;
-        cap.grab(); // grab next frame of the video
-        if(camera == 0)
+        cap.grab(); // grab next frame of the video     
+        cap.retrieve(frameCamDistorted[camValue]);
+        if(frameCamDistorted[camValue].size().height > 0)
         {
-            cap.retrieve(frameCamDistorted[0]);
-            if(frameCamDistorted[0].size().height > 0)
+            if(camValue == 0)
             {
-                lock_guard<mutex> guard(m1);
-                frameCam[0] = frameCamDistorted[0];
+                lock_guard<std::mutex> guard(m0);
                 hasFrame0 = true;
             }
-        }
-        else
-        {
-            cap.retrieve(frameCamDistorted[1]);
-            if(frameCamDistorted[1].size().height > 0)
+            else
             {
-                lock_guard<mutex> guard(m1);
-                frameCam[1] = frameCamDistorted[1];
-                hasFrame1 = true;
+                lock_guard<std::mutex> guard(m1);
+                hasFrame1 = true; 
             }
+            
+            frameCam[camValue] = frameCamDistorted[camValue]; 
         }
+        cout << frameCam[camValue].size() << endl;        
+//        if(camera == 0)
+//        {
+//            cap.retrieve(frameCamDistorted[0]);
+//            if(frameCamDistorted[0].size().height > 0)
+//            {
+//                lock_guard<std::mutex> guard(m0);
+//                frameCam[0] = frameCamDistorted[0];
+//                hasFrame0 = true;
+//            }
+//            cout << frameCam[0].size() << endl;
+//        }
+//        else
+//        {
+//            cap.retrieve(frameCamDistorted[1]);
+//            if(frameCamDistorted[1].size().height > 0)
+//            {
+//                lock_guard<std::mutex> guard(m1);
+//                frameCam[1] = frameCamDistorted[1];
+//                hasFrame1 = true;
+//            }
+//            cout << frameCam[1].size() << endl;
+//        }
     }
     return EXIT_SUCCESS;
 }
@@ -131,6 +152,8 @@ void TwoCamerasCalibrator::startCameras()
 {
     // FIRST CAMERA
     VideoCapture cap0("rtsp://192.168.0.162/live/main");
+    //rtsp://121.23.46.111:554/onvif/media/PRF08.wxp
+    //rtsp://121.23.46.168/video_1
     cap0.set(CV_CAP_PROP_FRAME_WIDTH, MAX_CAMERA_RESOLUTION);
     cap0.set(CV_CAP_PROP_FRAME_HEIGHT, MAX_CAMERA_RESOLUTION);
     resolutionCamX[0] = static_cast<int>(cap0.get(CV_CAP_PROP_FRAME_WIDTH));
@@ -138,20 +161,24 @@ void TwoCamerasCalibrator::startCameras()
     cap0.set(CV_CAP_PROP_FPS, FPS);
        
     // SECOND CAMERA
-    VideoCapture cap1("rtsp://192.168.1.168/video_1");
+    //VideoCapture cap1("rtsp://192.168.1.168/video_1");
+    //rtsp://121.23.46.111:554/onvif/media/PRF00.wxp
+    //rtsp://192.168.0.162/live/main
+    VideoCapture cap1("rtsp://121.23.46.168/video_1");
     cap1.set(CV_CAP_PROP_FRAME_WIDTH, MAX_CAMERA_RESOLUTION);
     cap1.set(CV_CAP_PROP_FRAME_HEIGHT, MAX_CAMERA_RESOLUTION);
     resolutionCamX[1] = static_cast<int>(cap1.get(CV_CAP_PROP_FRAME_WIDTH));
     resolutionCamY[1] = static_cast<int>(cap1.get(CV_CAP_PROP_FRAME_HEIGHT));
     cap1.set(CV_CAP_PROP_FPS, FPS);
        
-    cam0_ptr = unique_ptr<std::thread>(new thread(&TwoCamerasCalibrator::grabPicture, this, cap0, 0));
-    cam1_ptr = unique_ptr<std::thread>(new thread(&TwoCamerasCalibrator::grabPicture, this, cap1, 1));
-            
+    cam0_ptr = unique_ptr<std::thread>(new thread(&TwoCamerasCalibrator::grabPicture, this, 0, cap0, 0));
+    cam1_ptr = unique_ptr<std::thread>(new thread(&TwoCamerasCalibrator::grabPicture, this, 1, cap1, 1));
 }
+
 void TwoCamerasCalibrator::stopCameras()
 {
     threadRunning = false;
+    
     cam0_ptr->join(); // wait until second camera ended its job
     cam1_ptr->join(); // wait until first camera ended its job
 }
@@ -164,22 +191,20 @@ int TwoCamerasCalibrator::collectImages()
     int key = 0;
     int count = 1;
     while(key != 27)
-    {       
+    {   
         
-        if(hasFrame0)
+        
+        if(hasFrame0) // TV
         {
-            lock_guard<mutex> guard1(m0);
-            frameCamCopy[0] = frameCam[0];
-            cout << frameCamCopy[0].size() << endl;
+           
+            frameCamCopy[0] = frameCam[0].clone();   
             imshow("Frame Camera [0]", frameCamCopy[0]);
             hasFrame0 = false;
         }
         
-        if(hasFrame1)
+        if(hasFrame1) //IK
         {
-            lock_guard<mutex> guard2(m1);
-            frameCamCopy[1] = frameCam[1];
-            cout << frameCamCopy[1].size() << endl;
+            frameCamCopy[1] = frameCam[1].clone();
             imshow("Frame Camera [1]", frameCamCopy[1]);
             hasFrame1 = false;
         }
@@ -191,10 +216,9 @@ int TwoCamerasCalibrator::collectImages()
             imagelist.push_back(name1);
             string name2 = "/home/ilya/NetBeansProjects/CameraMerging/DoubleImages/cam_" + to_string(count++) + ".jpg";
             imagelist.push_back(name2);
-            lock_guard<mutex> guard1(m0);
-            imwrite(name1, frameCam[0]);
-            lock_guard<mutex> guard2(m1);
-            imwrite(name2, frameCam[1]);
+            
+            imwrite(name1, frameCamCopy[0]);
+            imwrite(name2, frameCamCopy[1]);
             cout << "Press 'x' to capture a new image" << endl;
             if(count >= NUM_IMAGES * 2)
                 break;
@@ -516,16 +540,16 @@ int TwoCamerasCalibrator::mergeImages()
     {
         if(hasFrame0)
         {
-            lock_guard<std::mutex> guard0(m0);
-            frameCamCopy[0] = frameCam[0];
+//            lock_guard<std::mutex> guard0(m0);
+//            frameCamCopy[0] = frameCam[0];
             imshow("FrameCam[0]", frameCamCopy[0]);
             hasFrame0 = false;
         }
         
         if(hasFrame1) 
         {
-            lock_guard<std::mutex> guard1(m1);
-            frameCamCopy[1] = frameCam[1];
+//            lock_guard<std::mutex> guard1(m1);
+//            frameCamCopy[1] = frameCam[1];
             imshow("FrameCam[1]", frameCamCopy[1]);
             hasFrame1 = false;
         }
@@ -534,12 +558,12 @@ int TwoCamerasCalibrator::mergeImages()
         {
             DualCameraAligner dca(intrinsicsMatrixUndistort[0], intrinsicsMatrixUndistort[1], R);
             frameCam0Rotated = dca.align(frameCamCopy[0]);
-//            DualCameraMerger dcm;
-//            Mat result = dcm.merge(frameCam0Rotated, frameCamCopy[1]);
-//            if(result.cols > 0)
-//            {
-//                imshow("Result",result);
-//            }
+            DualCameraMerger dcm;
+            Mat result = dcm.merge(frameCam0Rotated, frameCamCopy[1]);
+            if(result.cols > 0)
+            {
+                imshow("Result",result);
+            }
         }
     }
     return EXIT_SUCCESS;

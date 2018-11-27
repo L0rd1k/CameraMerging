@@ -251,7 +251,8 @@ int cameraCalibration()
         case 1: 
         {
             //string source = "rtsp://192.168.0.162/live/main";         
-            string source = "rtsp://192.168.1.168/video_1";           
+            //string source = "rtsp://192.168.1.168/video_1";         
+            string source = "rtsp://121.23.46.168/video_1";          
             VideoCapture cap(source);         
             return sc.collectImages(cap);
             break;
