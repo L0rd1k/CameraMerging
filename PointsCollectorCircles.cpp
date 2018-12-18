@@ -12,15 +12,18 @@
  */
 
 #include "PointsCollectorCircles.h"
+#include <opencv2/imgproc.hpp>
+#include <opencv2/highgui.hpp>
 
 PointsCollectorCircles::PointsCollectorCircles(int x, int y, int size, bool isAsymmetric) 
 {
-    this->chessboardSize = Size(x,y); //[4 x 11]
+    this->chessboardSize = Size(x,y); //[4 x 11
     this->squareSize = size; // 44 mm
     this->isAsymmetric = isAsymmetric; // the type of board(Assymetrical or Symmetrical)
 }
+
 PointsCollectorCircles::~PointsCollectorCircles() 
-{ 
+{
 }
 
 void PointsCollectorCircles::collectKeyPoints(Mat& image, vector<Point2f>& framePoints, vector<Point3f>& basePoints)
@@ -33,15 +36,13 @@ vector<Point2f> PointsCollectorCircles::collectFramePoints(Mat &image)
 {
     vector<Point2f> pts;
     int flags; // calibration flag
-    if(isAsymmetric) // choose the correct flag for calibration pattern
-    {
+    if(isAsymmetric) { // choose the correct flag for calibration pattern
         flags = CALIB_CB_ASYMMETRIC_GRID | CALIB_CB_CLUSTERING; // flag for asymmetric pattern
         //  CALIB_CB_CLUSTERIN - uses a special algorithm for grid detection. It is more robust to perspective distortions.
-    }
-    else
-    {
+    } else {
         flags = CALIB_CB_SYMMETRIC_GRID; // flag for symmetric pattern
     }
+    
     bool circlesResult = findCirclesGrid(image, chessboardSize, pts, flags); // find if the circle's pattern exist on the image
     if(!circlesResult) // in case patern wasn't detected
     {

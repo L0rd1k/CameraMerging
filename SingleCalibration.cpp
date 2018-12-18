@@ -15,77 +15,126 @@
 #include "PointsCollectorChess.h"
 #include "PointsCollectorCircles.h"
 
+
 SingleCalibration::SingleCalibration() 
 {
-    ptrCalibrator = new PointsCollectorChess(9,6,25);
-    //ptrCalibrator = new PointsCollectorCircles(4,11,44);
+    //ptrCalibrator = new PointsCollectorChess(9,6,25);
+    ptrCalibrator = new PointsCollectorCircles(4,11,44);
 }
-
 
 SingleCalibration::~SingleCalibration()
 {
-    
+    delete ptrCalibrator; 
 }
 
 int SingleCalibration::collectImages(VideoCapture& cap)
 {
     if(!cap.isOpened())
     {
-        cout << " Camera Checking was unsuccesfull!" << endl;
+        cout << " Camera Checking cwas unsuccesfull!" << endl;
         return -1;
     }
     
-    cout << "Collecting images." << endl;
-    cout << "Space  - to save the image's frame." << endl;
-    cout << "ESC - exit the application." << endl;
+    cout << "Collecting image........" << endl;
+    cout << "       Space  - to save the image's frame." << endl;
+    cout << "       ESC - exit the application." << endl;
     
-    Mat frame; // The current frame of the camera
+    Mat frame; 
     
+    // The current frame of the camera
+  
     while(true)
-    {                
+    {
         if(!cap.read(frame))
         {
             cout << "Error reading camera" << endl;
             continue;
         }       
         
-        imageSize = frame.size(); // get the current size of the frame      
-        imshow("Original frames", frame); // The output frame       
-        int key = waitKey(30);
-        if(key == 27) // ESC
-        {   
-            return -1;
-        }
-        else if(key == 32) // SPACE
+        imageSize = frame.size();
+        cout << imageSize << endl;
+        
+        cvtColor(frame,frame,CV_BGR2GRAY);
+        //bitwise_not(frame, frame); 
+        Mat image = frame;
+        vector<Point2f> pt;
+        int flags;
+        flags = CALIB_CB_ASYMMETRIC_GRID | CALIB_CB_CLUSTERING;
+        bool circlesResult = findCirclesGrid(image, ptrCalibrator->getChessboardSize(), pt, flags);
+        Mat cornersImage;
+        cvtColor(image,cornersImage, CV_GRAY2BGR);
+        if(circlesResult)
         {
-            cout << "Collected " << imageCount<< " images" << endl;
+            drawChessboardCorners(cornersImage,ptrCalibrator->getChessboardSize(),pt,true); // draw a specific points on the image 
+            imshow("Corners", cornersImage); 
+            pt.clear();
             
-            ostringstream ostr; // the next three rows, convert number to string
-            ostr << imageCount;
-            string theNumberString = ostr.str();
-            
-            string filepath = "/home/ilya/NetBeansProjects/CameraMerging/images/";
-            imwrite(filepath + theNumberString + ".jpg",frame); // writing an image to folder
-            imageCount++;
+            int key = waitKey(1);
+            if(key == 27)
+            { 
+                return -1;
+            }
+            else if(key == 32)
+            {
+                ostringstream ostr;
+                ostr << imageCount;
+                string theNumberString = ostr.str();
+                string filepath = "./IK/";
+                imwrite(filepath + theNumberString + ".jpg", cornersImage); // writing an image to folder
+                imageCount++;
+            }    
+        } else 
+        {
+            imshow("Corners",image);
         }
+        waitKey(1);
     }
+    
+//    while(true)
+//    {                
+//        if(!cap.read(frame))
+//        {
+//            cout << "Error reading camera" << endl;
+//            continue;
+//        }      
+//        
+//        imageSize = frame.size(); // get the current size of the frame 
+//        cout << imageSize << endl;
+//        imshow("Original frames", frame); // The output frame       
+//        int key = waitKey(30);
+//        if(key == 27) // ESC
+//        {   
+//            return -1;
+//        }
+//        else if(key == 32) // SPACE
+//        {
+//            cout << "Collected " << imageCount<< " images" << endl;
+//            
+//            ostringstream ostr; // the next three rows, convert number to string
+//            ostr << imageCount;
+//            string theNumberString = ostr.str();
+//            
+//            string filepath = "./images/IK/";
+//            imwrite(filepath + theNumberString + ".jpg",frame); // writing an image to folder
+//            imageCount++;
+//        }
+//    }
     return imageCount;
 }
 
-vector<Point2f> SingleCalibration::collectPoints(Mat image)
+vector<Point2f> SingleCalibration::collectPoints(Mat image,bool camCheck)
 {
-    imageSize = image.size(); // image size(for instance 1356x1024)
-    
+    imageSize = image.size(); // image size(for instance 1356x1024) 
     cout << imageSize << endl; 
-    
     vector<Point2f> currentPoints; // Points from the given image 
-    
     const int maxScale = 1;  
     Mat gray;  
     convertToGray(image,gray); // convert original frame to gray
-    //bitwise_not(gray, gray);   // ! ONLY FOR IK CAMERAS ! // inverts every bit of an array
     
-    
+    if(camCheck)
+    {
+        bitwise_not(gray, gray);   // ! ONLY FOR IK CAMERAS ! // inverts every bit of an array
+    }
     
     for(int s = 1; s <= maxScale; s++)
     {
@@ -96,11 +145,7 @@ vector<Point2f> SingleCalibration::collectPoints(Mat image)
         }       
         
         currentPoints = ptrCalibrator->collectFramePoints(tmpImage); // here we got specific corners points from the image
-        
-        //cout << "Current Points" << currentPoints;
-        
-        //cout << currentPoints.size() << endl;
-        
+
         if( currentPoints.size() > 0) // in case we get any points
         {
             for(uint j=0; j < currentPoints.size(); j++) //25 points 
@@ -125,8 +170,11 @@ void SingleCalibration::showPoints(Mat image, vector<Point2f> & corners)
         cvtColor(image,cornersImage, CV_GRAY2BGR); // convert To RGB again
         drawChessboardCorners(cornersImage, ptrCalibrator->getChessboardSize(),corners,true); // draw a specific points on the image 
         imshow_my("Corners", cornersImage);
-        waitKey(10000);
+    } else {
+        imshow_my("Corners", image);
+        cout << "no points found" << endl;
     }
+    waitKey(10000);
 }
 
 void SingleCalibration::imshow_my(const String& winname, Mat& mat)
@@ -143,10 +191,10 @@ void SingleCalibration::imshow_my(const String& winname, Mat& mat)
     }
 }
 
-int SingleCalibration::calibrate()
+int SingleCalibration::calibrate(bool camCheck)
 {
     cout << "The process of calibration" << endl;
-    string folder = "/home/ilya/NetBeansProjects/CameraMerging/images/*.jpg";
+    string folder = "./IK/*.jpg";
     vector<String> filename; // vector for saving all files which we found in folder
     glob(folder,filename); // the function for searching specific files
     cout << "The numbers of frames " << filename.size() << endl; 
@@ -156,12 +204,11 @@ int SingleCalibration::calibrate()
         cout << "Loading " << i+1 <<"........."  << filename[i] << endl;
         Mat image = imread(filename[i]); // read the files from the vector
         //cout << image << endl;
-        collectPoints(image); // main function for collecting point from a given image
+        collectPoints(image,camCheck); // main function for collecting point from a given image
     }
     calib();  
     return 0;
 }
-
 
 void SingleCalibration::calib()
 {
@@ -189,7 +236,7 @@ void SingleCalibration::calib()
 
 void SingleCalibration::saveCalib(Mat m, Mat d, Size imageSize)
 {
-    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/images/intrinsics.yml";
+    const char* filename = "./IK/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_WRITE);
     if(fs.isOpened())
     {
@@ -198,8 +245,6 @@ void SingleCalibration::saveCalib(Mat m, Mat d, Size imageSize)
     }
     cout << "Saved calibration data to " << filename << endl;
 }
-
-
 
 void SingleCalibration::convertToGray(const Mat& in, Mat& out)
 {
@@ -224,7 +269,7 @@ int SingleCalibration::calculateFoV()
 
 void SingleCalibration::openCalib(Mat& m, Mat& d, Size& s)
 {
-    const char* filename = "/home/ilya/NetBeansProjects/CameraMerging/images/intrinsics.yml";
+    const char* filename = "./IK/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_READ);
     if (fs.isOpened()) 
     {
@@ -235,15 +280,14 @@ void SingleCalibration::openCalib(Mat& m, Mat& d, Size& s)
     } 
 }
 
-
 int cameraCalibration()
 {
-    int option = 1 ; // collect images by default
-       
+    int option = 1 ; // collect images by default 
     cout << "1. Collect images. " << endl;
-    cout << "2. Calibrate camera. " << endl;
+    cout << "2. Calibrate cameras. " << endl;
     cout << "3. Field of view. " << endl; 
     cout << "Choose the option: ";
+    
     cin >> option;     
     SingleCalibration sc;    
     switch(option) 
@@ -251,15 +295,31 @@ int cameraCalibration()
         case 1: 
         {
             //string source = "rtsp://192.168.0.162/live/main";         
-            //string source = "rtsp://192.168.1.168/video_1";         
-            string source = "rtsp://121.23.46.168/video_1";          
+            //string source = "rtsp://192.168.1.168/video_1";  
+            //rtsp://121.23.46.168/video_1
+            string source = "rtsp://192.168.1.168/video_1"; 
+            //string source = "rtsp://192.168.0.111/onvif/media/PRF00.wxp"; 
             VideoCapture cap(source);         
             return sc.collectImages(cap);
             break;
         }
         case 2:
-        {
-            return sc.calibrate();
+        {   
+            cout << "1 - Calibration for TV camera.  " << endl;
+            cout << "2 - Calibration for IK camera.  " << endl;
+            int camOption = 1;
+            bool camCheck = 0;
+            cin >> camOption;
+            
+            if(camOption == 1) 
+                camCheck = false;
+            else if(camOption == 2) 
+                camCheck = true;
+            else 
+                return 0;
+            
+            
+            return sc.calibrate(camCheck);
             break;
         }
         case 3:

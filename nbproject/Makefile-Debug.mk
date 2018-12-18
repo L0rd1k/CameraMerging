@@ -61,93 +61,93 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/local/opencv3.2/lib -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_calib3d -lopencv_ccalib -lopencv_core -lopencv_datasets -lopencv_dnn -lopencv_dpm -lopencv_face -lopencv_features2d -lopencv_flann -lopencv_fuzzy -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc -lopencv_line_descriptor -lopencv_ml -lopencv_objdetect -lopencv_optflow -lopencv_phase_unwrapping -lopencv_photo -lopencv_plot -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_shape -lopencv_stereo -lopencv_stitching -lopencv_structured_light -lopencv_superres -lopencv_surface_matching -lopencv_text -lopencv_tracking -lopencv_video -lopencv_videoio -lopencv_videostab -lopencv_xfeatures2d -lopencv_ximgproc -lopencv_xobjdetect -lopencv_xphoto /usr/local/opencv3.2/lib/libopencv_aruco.so /usr/local/opencv3.2/lib/libopencv_bgsegm.so /usr/local/opencv3.2/lib/libopencv_bioinspired.so /usr/local/opencv3.2/lib/libopencv_calib3d.so /usr/local/opencv3.2/lib/libopencv_ccalib.so /usr/local/opencv3.2/lib/libopencv_core.so /usr/local/opencv3.2/lib/libopencv_datasets.so /usr/local/opencv3.2/lib/libopencv_dnn.so /usr/local/opencv3.2/lib/libopencv_dpm.so /usr/local/opencv3.2/lib/libopencv_face.so /usr/local/opencv3.2/lib/libopencv_features2d.so /usr/local/opencv3.2/lib/libopencv_flann.so /usr/local/opencv3.2/lib/libopencv_fuzzy.so /usr/local/opencv3.2/lib/libopencv_highgui.so /usr/local/opencv3.2/lib/libopencv_imgcodecs.so /usr/local/opencv3.2/lib/libopencv_imgproc.so /usr/local/opencv3.2/lib/libopencv_line_descriptor.so /usr/local/opencv3.2/lib/libopencv_ml.so /usr/local/opencv3.2/lib/libopencv_objdetect.so /usr/local/opencv3.2/lib/libopencv_optflow.so /usr/local/opencv3.2/lib/libopencv_phase_unwrapping.so /usr/local/opencv3.2/lib/libopencv_photo.so /usr/local/opencv3.2/lib/libopencv_plot.so /usr/local/opencv3.2/lib/libopencv_reg.so /usr/local/opencv3.2/lib/libopencv_rgbd.so /usr/local/opencv3.2/lib/libopencv_saliency.so /usr/local/opencv3.2/lib/libopencv_shape.so /usr/local/opencv3.2/lib/libopencv_stereo.so /usr/local/opencv3.2/lib/libopencv_stitching.so /usr/local/opencv3.2/lib/libopencv_structured_light.so /usr/local/opencv3.2/lib/libopencv_superres.so /usr/local/opencv3.2/lib/libopencv_surface_matching.so /usr/local/opencv3.2/lib/libopencv_text.so /usr/local/opencv3.2/lib/libopencv_tracking.so /usr/local/opencv3.2/lib/libopencv_video.so /usr/local/opencv3.2/lib/libopencv_videoio.so /usr/local/opencv3.2/lib/libopencv_videostab.so /usr/local/opencv3.2/lib/libopencv_xfeatures2d.so /usr/local/opencv3.2/lib/libopencv_ximgproc.so /usr/local/opencv3.2/lib/libopencv_xobjdetect.so /usr/local/opencv3.2/lib/libopencv_xphoto.so
+LDLIBSOPTIONS=-L/usr/local/opencv_3.2/lib /usr/local/opencv_3.2/lib/libopencv_aruco.so /usr/local/opencv_3.2/lib/libopencv_bgsegm.so /usr/local/opencv_3.2/lib/libopencv_bioinspired.so /usr/local/opencv_3.2/lib/libopencv_calib3d.so /usr/local/opencv_3.2/lib/libopencv_ccalib.so /usr/local/opencv_3.2/lib/libopencv_core.so /usr/local/opencv_3.2/lib/libopencv_datasets.so /usr/local/opencv_3.2/lib/libopencv_dnn.so /usr/local/opencv_3.2/lib/libopencv_dpm.so /usr/local/opencv_3.2/lib/libopencv_face.so /usr/local/opencv_3.2/lib/libopencv_features2d.so /usr/local/opencv_3.2/lib/libopencv_flann.so /usr/local/opencv_3.2/lib/libopencv_fuzzy.so /usr/local/opencv_3.2/lib/libopencv_highgui.so /usr/local/opencv_3.2/lib/libopencv_imgcodecs.so /usr/local/opencv_3.2/lib/libopencv_imgproc.so /usr/local/opencv_3.2/lib/libopencv_line_descriptor.so /usr/local/opencv_3.2/lib/libopencv_ml.so /usr/local/opencv_3.2/lib/libopencv_objdetect.so /usr/local/opencv_3.2/lib/libopencv_optflow.so /usr/local/opencv_3.2/lib/libopencv_phase_unwrapping.so /usr/local/opencv_3.2/lib/libopencv_photo.so /usr/local/opencv_3.2/lib/libopencv_plot.so /usr/local/opencv_3.2/lib/libopencv_reg.so /usr/local/opencv_3.2/lib/libopencv_rgbd.so /usr/local/opencv_3.2/lib/libopencv_saliency.so /usr/local/opencv_3.2/lib/libopencv_shape.so /usr/local/opencv_3.2/lib/libopencv_stereo.so /usr/local/opencv_3.2/lib/libopencv_stitching.so /usr/local/opencv_3.2/lib/libopencv_structured_light.so /usr/local/opencv_3.2/lib/libopencv_superres.so /usr/local/opencv_3.2/lib/libopencv_surface_matching.so /usr/local/opencv_3.2/lib/libopencv_text.so /usr/local/opencv_3.2/lib/libopencv_tracking.so /usr/local/opencv_3.2/lib/libopencv_video.so /usr/local/opencv_3.2/lib/libopencv_videoio.so /usr/local/opencv_3.2/lib/libopencv_videostab.so /usr/local/opencv_3.2/lib/libopencv_xfeatures2d.so /usr/local/opencv_3.2/lib/libopencv_ximgproc.so /usr/local/opencv_3.2/lib/libopencv_xobjdetect.so /usr/local/opencv_3.2/lib/libopencv_xphoto.so
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_aruco.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_aruco.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_bgsegm.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_bgsegm.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_bioinspired.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_bioinspired.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_calib3d.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_calib3d.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_ccalib.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_ccalib.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_core.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_core.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_datasets.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_datasets.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_dnn.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_dnn.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_dpm.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_dpm.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_face.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_face.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_features2d.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_features2d.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_flann.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_flann.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_fuzzy.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_fuzzy.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_highgui.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_highgui.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_imgcodecs.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_imgcodecs.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_imgproc.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_imgproc.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_line_descriptor.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_line_descriptor.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_ml.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_ml.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_objdetect.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_objdetect.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_optflow.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_optflow.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_phase_unwrapping.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_phase_unwrapping.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_photo.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_photo.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_plot.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_plot.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_reg.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_reg.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_rgbd.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_rgbd.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_saliency.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_saliency.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_shape.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_shape.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_stereo.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_stereo.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_stitching.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_stitching.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_structured_light.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_structured_light.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_superres.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_superres.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_surface_matching.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_surface_matching.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_text.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_text.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_tracking.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_tracking.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_video.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_video.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_videoio.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_videoio.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_videostab.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_videostab.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_xfeatures2d.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_xfeatures2d.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_ximgproc.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_ximgproc.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_xobjdetect.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_xobjdetect.so
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv3.2/lib/libopencv_xphoto.so
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: /usr/local/opencv_3.2/lib/libopencv_xphoto.so
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -156,52 +156,52 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging: ${OBJECTFILES}
 ${OBJECTDIR}/DualCameraAligner.o: DualCameraAligner.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DualCameraAligner.o DualCameraAligner.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DualCameraAligner.o DualCameraAligner.cpp
 
 ${OBJECTDIR}/DualCameraMerger.o: DualCameraMerger.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DualCameraMerger.o DualCameraMerger.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DualCameraMerger.o DualCameraMerger.cpp
 
 ${OBJECTDIR}/FastUndistort.o: FastUndistort.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FastUndistort.o FastUndistort.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FastUndistort.o FastUndistort.cpp
 
 ${OBJECTDIR}/FoVChecker.o: FoVChecker.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FoVChecker.o FoVChecker.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FoVChecker.o FoVChecker.cpp
 
 ${OBJECTDIR}/PointsCollectorChess.o: PointsCollectorChess.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorChess.o PointsCollectorChess.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorChess.o PointsCollectorChess.cpp
 
 ${OBJECTDIR}/PointsCollectorCircles.o: PointsCollectorCircles.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorCircles.o PointsCollectorCircles.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PointsCollectorCircles.o PointsCollectorCircles.cpp
 
 ${OBJECTDIR}/SingleCalibration.o: SingleCalibration.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SingleCalibration.o SingleCalibration.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SingleCalibration.o SingleCalibration.cpp
 
 ${OBJECTDIR}/TwoCamerasCalibrator.o: TwoCamerasCalibrator.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TwoCamerasCalibrator.o TwoCamerasCalibrator.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TwoCamerasCalibrator.o TwoCamerasCalibrator.cpp
 
 ${OBJECTDIR}/Undistort.o: Undistort.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Undistort.o Undistort.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Undistort.o Undistort.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/opencv3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/usr/local/opencv_3.2/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -209,7 +209,7 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_face.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_line_descriptor.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_surface_matching.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_xfeatures2d.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_saliency.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videoio.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_plot.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_core.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_flann.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_structured_light.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_reg.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_datasets.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_stereo.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_bioinspired.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_ximgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_aruco.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videostab.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_rgbd.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_dpm.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_dnn.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_photo.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_features2d.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_objdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_ml.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_superres.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgcodecs.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_tracking.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_video.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_calib3d.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_bgsegm.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_shape.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_text.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_xobjdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_highgui.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_optflow.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_fuzzy.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_stitching.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_xphoto.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_ccalib.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_phase_unwrapping.so
+	${RM} -r ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_stitching.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_surface_matching.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_rgbd.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_dnn.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_ximgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_dpm.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_bioinspired.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_xphoto.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgproc.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_structured_light.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_ml.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_video.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_bgsegm.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_phase_unwrapping.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_photo.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_core.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_imgcodecs.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_highgui.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_line_descriptor.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_reg.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_xobjdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_xfeatures2d.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_calib3d.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_saliency.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_face.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_aruco.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_shape.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_text.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_optflow.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_plot.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_datasets.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_features2d.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_flann.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_fuzzy.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_superres.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_tracking.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_ccalib.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videostab.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_objdetect.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_stereo.so ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libopencv_videoio.so
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cameramerging
 
 # Subprojects

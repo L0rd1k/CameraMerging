@@ -76,97 +76,56 @@
           <standard>8</standard>
           <commandlineTool>g++</commandlineTool>
           <incDir>
-            <pElem>/usr/local/opencv3.2/include</pElem>
+            <pElem>/usr/local/opencv_3.2/include</pElem>
           </incDir>
           <commandLine>-pthread</commandLine>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
-            <pElem>/usr/local/opencv3.2/lib</pElem>
+            <pElem>/usr/local/opencv_3.2/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
-            <linkerLibLibItem>opencv_aruco</linkerLibLibItem>
-            <linkerLibLibItem>opencv_bgsegm</linkerLibLibItem>
-            <linkerLibLibItem>opencv_bioinspired</linkerLibLibItem>
-            <linkerLibLibItem>opencv_calib3d</linkerLibLibItem>
-            <linkerLibLibItem>opencv_ccalib</linkerLibLibItem>
-            <linkerLibLibItem>opencv_core</linkerLibLibItem>
-            <linkerLibLibItem>opencv_datasets</linkerLibLibItem>
-            <linkerLibLibItem>opencv_dnn</linkerLibLibItem>
-            <linkerLibLibItem>opencv_dpm</linkerLibLibItem>
-            <linkerLibLibItem>opencv_face</linkerLibLibItem>
-            <linkerLibLibItem>opencv_features2d</linkerLibLibItem>
-            <linkerLibLibItem>opencv_flann</linkerLibLibItem>
-            <linkerLibLibItem>opencv_fuzzy</linkerLibLibItem>
-            <linkerLibLibItem>opencv_highgui</linkerLibLibItem>
-            <linkerLibLibItem>opencv_imgcodecs</linkerLibLibItem>
-            <linkerLibLibItem>opencv_imgproc</linkerLibLibItem>
-            <linkerLibLibItem>opencv_line_descriptor</linkerLibLibItem>
-            <linkerLibLibItem>opencv_ml</linkerLibLibItem>
-            <linkerLibLibItem>opencv_objdetect</linkerLibLibItem>
-            <linkerLibLibItem>opencv_optflow</linkerLibLibItem>
-            <linkerLibLibItem>opencv_phase_unwrapping</linkerLibLibItem>
-            <linkerLibLibItem>opencv_photo</linkerLibLibItem>
-            <linkerLibLibItem>opencv_plot</linkerLibLibItem>
-            <linkerLibLibItem>opencv_reg</linkerLibLibItem>
-            <linkerLibLibItem>opencv_rgbd</linkerLibLibItem>
-            <linkerLibLibItem>opencv_saliency</linkerLibLibItem>
-            <linkerLibLibItem>opencv_shape</linkerLibLibItem>
-            <linkerLibLibItem>opencv_stereo</linkerLibLibItem>
-            <linkerLibLibItem>opencv_stitching</linkerLibLibItem>
-            <linkerLibLibItem>opencv_structured_light</linkerLibLibItem>
-            <linkerLibLibItem>opencv_superres</linkerLibLibItem>
-            <linkerLibLibItem>opencv_surface_matching</linkerLibLibItem>
-            <linkerLibLibItem>opencv_text</linkerLibLibItem>
-            <linkerLibLibItem>opencv_tracking</linkerLibLibItem>
-            <linkerLibLibItem>opencv_video</linkerLibLibItem>
-            <linkerLibLibItem>opencv_videoio</linkerLibLibItem>
-            <linkerLibLibItem>opencv_videostab</linkerLibLibItem>
-            <linkerLibLibItem>opencv_xfeatures2d</linkerLibLibItem>
-            <linkerLibLibItem>opencv_ximgproc</linkerLibLibItem>
-            <linkerLibLibItem>opencv_xobjdetect</linkerLibLibItem>
-            <linkerLibLibItem>opencv_xphoto</linkerLibLibItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_aruco.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_bgsegm.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_bioinspired.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_calib3d.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_ccalib.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_core.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_datasets.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_dnn.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_dpm.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_face.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_features2d.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_flann.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_fuzzy.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_highgui.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_imgcodecs.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_imgproc.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_line_descriptor.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_ml.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_objdetect.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_optflow.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_phase_unwrapping.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_photo.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_plot.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_reg.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_rgbd.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_saliency.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_shape.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_stereo.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_stitching.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_structured_light.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_superres.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_surface_matching.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_text.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_tracking.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_video.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_videoio.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_videostab.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_xfeatures2d.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_ximgproc.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_xobjdetect.so</linkerLibFileItem>
-            <linkerLibFileItem>/usr/local/opencv3.2/lib/libopencv_xphoto.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_aruco.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_bgsegm.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_bioinspired.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_calib3d.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_ccalib.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_core.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_datasets.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_dnn.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_dpm.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_face.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_features2d.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_flann.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_fuzzy.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_highgui.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_imgcodecs.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_imgproc.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_line_descriptor.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_ml.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_objdetect.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_optflow.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_phase_unwrapping.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_photo.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_plot.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_reg.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_rgbd.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_saliency.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_shape.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_stereo.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_stitching.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_structured_light.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_superres.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_surface_matching.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_text.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_tracking.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_video.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_videoio.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_videostab.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_xfeatures2d.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_ximgproc.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_xobjdetect.so</linkerLibFileItem>
+            <linkerLibFileItem>/usr/local/opencv_3.2/lib/libopencv_xphoto.so</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

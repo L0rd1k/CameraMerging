@@ -36,30 +36,28 @@
 
 using namespace std;
 using namespace cv;
+typedef vector<Point2f> Points2f;
+typedef vector<Point3f> Points3f;
 
 class TwoCamerasCalibrator {
 public:
     TwoCamerasCalibrator();
     virtual ~TwoCamerasCalibrator();
     int twoCamerasCalibration();
-    int stereoCalibrateRectificate(const vector<string>& imagelist, Size boardSize, float squareSize);
+    int getPoints(vector<Points2f> *imagePoints, vector<Points3f>& objectPoints);
+    int stereoCalibrateRectificate(Size boardSize, float squareSize);
     int mergeImages();
 private:
     int loadCalibrations(int option);  
     void startCameras();
     void stopCameras();
     int collectImages();
-    int grabPicture(int camValue,VideoCapture cap, int camera); 
-    vector<Point2f> collectPoints(Mat image);
+    int grabPicture(int camera); 
+    Points2f collectPoints(Mat image);
     vector<Point2d> imageResize;
-    void showPoints(Mat image, vector<Point2f>& corners);
+    void showPoints(Mat image, Points2f& corners);
 private:
     Mat R, T;
-    Mat intrinsicsMatrix[2], distortions[2];
-    Mat intrinsicsMatrixUndistort[2], distortionsUndistort[2];
-    Mat frameCam[2];
-    double resolutionCamX[2];
-    double resolutionCamY[2]; 
     vector<string> imagelist;
     CalibratorBase* _calibrator;
 };

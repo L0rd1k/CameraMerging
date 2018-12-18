@@ -30,7 +30,7 @@ vector<Point2f> PointsCollectorChess::collectFramePoints(Mat &image)
     
     //cout <<"!!!!"<<image.size() << endl;
     
-    for(double p = -4; p <= 0; p++) // scale image until chessboard would not be detected
+    for(double p = -4; p <= 4; p++) // scale image until chessboard would not be detected
     {
         Mat imageResized;
         double scale = pow(1.5, p);
@@ -39,9 +39,9 @@ vector<Point2f> PointsCollectorChess::collectFramePoints(Mat &image)
         bool chessboardResult = findChessboardCorners(imageResized, chessboardSize, pts, 
                 CV_CALIB_CB_FAST_CHECK | CV_CALIB_CB_NORMALIZE_IMAGE | CV_CALIB_CB_ADAPTIVE_THRESH);
         
-        
-        //imshow("image", imageResized);
-        //cout << chessboardResult << endl;
+        imshow("image", imageResized);
+        waitKey(100);
+        cout << chessboardResult << endl;
         int key = waitKey(0);
         
         if(chessboardResult) // if chessboard corners were detecting

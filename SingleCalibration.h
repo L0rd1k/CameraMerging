@@ -37,11 +37,10 @@ public:
     virtual ~SingleCalibration();
     
     int collectImages(VideoCapture &cap);
-    int calibrate();
-    vector<Point2f> collectPoints(Mat image);
+    int calibrate(bool camCheck);
+    vector<Point2f> collectPoints(Mat image, bool camCheck);
     int calculateFoV();
     
-
 protected:
     void convertToGray(const Mat& in, Mat& out);
     void showPoints(Mat image, vector<Point2f> &corners);
@@ -49,10 +48,9 @@ protected:
     void calib();
     void saveCalib(Mat m, Mat d, Size imageSize);
     void openCalib(Mat& m, Mat& d, Size& imageSize);
-    
     CalibratorBase* ptrCalibrator; // pointer to abstract class 
     Size imageSize; // the size of the frame;    
-    int imageCount; // the count of the frame wich was collected 
+    int imageCount = 1; // the count of the frame wich was collected 
     vector< vector<Point2f> > imagePoints;
 };
 

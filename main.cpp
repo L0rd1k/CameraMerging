@@ -19,12 +19,9 @@
 using namespace std;
 using namespace cv;
 
-/*
- * 
- */
-
 int main(int argc, char** argv) 
 {
+    
     //cameraCalibration(); // 1
     //testUndistort(); // 2  
     TwoCamerasCalibrator tcc;
