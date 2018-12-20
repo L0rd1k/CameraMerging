@@ -25,6 +25,7 @@
 #include <thread>
 #include <atomic>
 #include <mutex>
+#include <sstream>
 
 #include "Timer.h"
 #include "CalibratorBase.h"

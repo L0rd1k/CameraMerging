@@ -41,8 +41,6 @@ int SingleCalibration::collectImages(VideoCapture& cap)
     
     Mat frame; 
     
-    // The current frame of the camera
-  
     while(true)
     {
         if(!cap.read(frame))
@@ -63,62 +61,34 @@ int SingleCalibration::collectImages(VideoCapture& cap)
         bool circlesResult = findCirclesGrid(image, ptrCalibrator->getChessboardSize(), pt, flags);
         Mat cornersImage;
         cvtColor(image,cornersImage, CV_GRAY2BGR);
+        int key = waitKey(1);
         if(circlesResult)
         {
             drawChessboardCorners(cornersImage,ptrCalibrator->getChessboardSize(),pt,true); // draw a specific points on the image 
             imshow("Corners", cornersImage); 
             pt.clear();
             
-            int key = waitKey(1);
-            if(key == 27)
-            { 
-                return -1;
-            }
-            else if(key == 32)
+            
+            if(key == 32)
             {
                 ostringstream ostr;
                 ostr << imageCount;
                 string theNumberString = ostr.str();
-                string filepath = "./IK/";
-                imwrite(filepath + theNumberString + ".jpg", cornersImage); // writing an image to folder
+                string filepath = "./SingleCalibration/TV-NetworkCamera/";
+                imwrite(filepath + theNumberString + ".jpg", image); // writing an image to folder
                 imageCount++;
-            }    
+            }  
+   
         } else 
         {
             imshow("Corners",image);
         }
+        if(key == 27)
+        { 
+            return -1;
+        } 
         waitKey(1);
     }
-    
-//    while(true)
-//    {                
-//        if(!cap.read(frame))
-//        {
-//            cout << "Error reading camera" << endl;
-//            continue;
-//        }      
-//        
-//        imageSize = frame.size(); // get the current size of the frame 
-//        cout << imageSize << endl;
-//        imshow("Original frames", frame); // The output frame       
-//        int key = waitKey(30);
-//        if(key == 27) // ESC
-//        {   
-//            return -1;
-//        }
-//        else if(key == 32) // SPACE
-//        {
-//            cout << "Collected " << imageCount<< " images" << endl;
-//            
-//            ostringstream ostr; // the next three rows, convert number to string
-//            ostr << imageCount;
-//            string theNumberString = ostr.str();
-//            
-//            string filepath = "./images/IK/";
-//            imwrite(filepath + theNumberString + ".jpg",frame); // writing an image to folder
-//            imageCount++;
-//        }
-//    }
     return imageCount;
 }
 
@@ -194,7 +164,7 @@ void SingleCalibration::imshow_my(const String& winname, Mat& mat)
 int SingleCalibration::calibrate(bool camCheck)
 {
     cout << "The process of calibration" << endl;
-    string folder = "./IK/*.jpg";
+    string folder = "./SingleCalibration/TV-NetworkCamera/*.jpg";
     vector<String> filename; // vector for saving all files which we found in folder
     glob(folder,filename); // the function for searching specific files
     cout << "The numbers of frames " << filename.size() << endl; 
@@ -228,15 +198,15 @@ void SingleCalibration::calib()
                                     CV_CALIB_FIX_K5 |
                                     CV_CALIB_FIX_K6 |
                                     CV_CALIB_FIX_K3 |
-                                    CV_CALIB_ZERO_TANGENT_DIST,
+                                    CV_CALIB_ZERO_TANGENT_DIST | CV_CALIB_FIX_PRINCIPAL_POINT,
                                     TermCriteria(CV_TERMCRIT_ITER + CV_TERMCRIT_EPS, 100, 1e-5));
     cout << "Calibration error: " << err << endl; // At the end we got Pre-error of calibration
     saveCalib(m,d, imageSize);
 }
-
+    
 void SingleCalibration::saveCalib(Mat m, Mat d, Size imageSize)
 {
-    const char* filename = "./IK/intrinsics.yml";
+    const char* filename = "./SingleCalibration/TV-NetworkCamera/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_WRITE);
     if(fs.isOpened())
     {
@@ -269,7 +239,7 @@ int SingleCalibration::calculateFoV()
 
 void SingleCalibration::openCalib(Mat& m, Mat& d, Size& s)
 {
-    const char* filename = "./IK/intrinsics.yml";
+    const char* filename = "./SingleCalibration/TV-NetworkCamera/intrinsics.yml";
     FileStorage fs(filename, CV_STORAGE_READ);
     if (fs.isOpened()) 
     {
@@ -294,10 +264,10 @@ int cameraCalibration()
     {
         case 1: 
         {
-            //string source = "rtsp://192.168.0.162/live/main";         
+            string source = "rtsp://192.168.0.162/live/main";         
             //string source = "rtsp://192.168.1.168/video_1";  
             //rtsp://121.23.46.168/video_1
-            string source = "rtsp://192.168.1.168/video_1"; 
+            //string source = "rtsp://192.168.1.168/video_1"; 
             //string source = "rtsp://192.168.0.111/onvif/media/PRF00.wxp"; 
             VideoCapture cap(source);         
             return sc.collectImages(cap);
@@ -308,7 +278,9 @@ int cameraCalibration()
             cout << "1 - Calibration for TV camera.  " << endl;
             cout << "2 - Calibration for IK camera.  " << endl;
             int camOption = 1;
-            bool camCheck = 0;
+            
+            bool camCheck = false;
+            
             cin >> camOption;
             
             if(camOption == 1) 

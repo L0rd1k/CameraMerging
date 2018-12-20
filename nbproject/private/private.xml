@@ -7,10 +7,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/ilya/NetBeansProjects/CameraMerging/DualCameraMerger.cpp</file>
             <file>file:/home/ilya/NetBeansProjects/CameraMerging/main.cpp</file>
             <file>file:/home/ilya/NetBeansProjects/CameraMerging/TwoCamerasCalibrator.h</file>
+            <file>file:/home/ilya/NetBeansProjects/CameraMerging/SingleCalibration.h</file>
+            <file>file:/home/ilya/NetBeansProjects/CameraMerging/DualCameraAligner.cpp</file>
+            <file>file:/home/ilya/NetBeansProjects/CameraMerging/DualCameraAligner.h</file>
             <file>file:/home/ilya/NetBeansProjects/CameraMerging/TwoCamerasCalibrator.cpp</file>
-            <file>file:/home/ilya/NetBeansProjects/CameraMerging/CalibratorBase.h</file>
+            <file>file:/home/ilya/NetBeansProjects/CameraMerging/SingleCalibration.cpp</file>
         </group>
     </open-files>
 </project-private>
