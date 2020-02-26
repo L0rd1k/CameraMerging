@@ -16,3 +16,8 @@
 | 1       | 2           | 3           | 4           |
 | ------------- |:------------------:|:------------------:|------------------:|
 |![alt-текст](https://github.com/L0rd1k/CameraMerging/blob/master/TestResults/1.png)|![alt-текст](https://github.com/L0rd1k/CameraMerging/blob/master/TestResults/1-1.png)|![alt-текст](https://github.com/L0rd1k/CameraMerging/blob/master/TestResults/2.png)|![alt-текст](https://github.com/L0rd1k/CameraMerging/blob/master/TestResults/1-2.png)|
+
+
+| TV       | IK           | Merge           |
+|:-------------:|:------------------:|:------------------:|
+|![alt-текст](https://github.com/L0rd1k/CameraMerging/blob/master/TestResults/Image%20TV_screenshot_21.01.2020.png)|![alt-текст](https://github.com/L0rd1k/CameraMerging/blob/master/TestResults/Image%20IK_screenshot_21.01.2020.png)|![alt-текст](https://github.com/L0rd1k/CameraMerging/blob/master/TestResults/merged_screenshot_21.01.2020.png)|
